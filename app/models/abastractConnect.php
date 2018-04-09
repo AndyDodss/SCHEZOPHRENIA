@@ -1,28 +1,23 @@
 <?php
 
-/*
- * Description of Awebarts Class
- *  main class will include the general fuctions 
- * @author Ali7amdi
- */
 
-class Awebarts {  
+class abastractConnect {  
     
     //class attr
-    protected $cxn;  // databse object => connection to Mysql
+    protected $db;  // databse object => connection to Mysql
     
     
     //class methods or functions
     function connectToDb()
     {
         //require_once MODELS.'Database.php';
-        $vars = "includes/vars.php";
-        $this->cxn = new Database($vars);
+        $vars = "../includes/global.php";
+        $this->db = new Database($vars);
     }
     
     function close()
     {
-        $this->cxn->close();
+        $this->db->close();
     }
     
 }
