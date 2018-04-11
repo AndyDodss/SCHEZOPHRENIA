@@ -7,7 +7,7 @@
 <br/>
 <legend>Add Invoice</legend>
 <br/>
-<form action="../../controllers/addinvoiceController.php" method="post" ">
+<form action="../../controllers/employee/addinvoiceController.php" method="post" ">
 <table class="table table-bordered">
   <thead>
     <tr>
