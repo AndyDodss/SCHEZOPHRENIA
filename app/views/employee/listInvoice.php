@@ -44,73 +44,63 @@
   <div>
   
     <p>
-    display all invoices
+    show all Invoices we have
     </p>
 	
 	<aside class="alert success">
   <p><i class="icon fa fa-envelope-o"></i> Roger Roger, Message Received. <i class="close fa fa-times"></i></p>
 </aside><!-- end alert -->
 
-<!---
-<div class="input-group">
-  <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
-  <input class="form-control" type="password" placeholder="Password">
-</div>
----->
-<input type="search" class="light-table-filter" data-table="order-table" placeholder="Filtrer" /> <a class="button"><i class="fa fa-exclamation-circle"></i> Report Error</a>
+<input type="search" class="light-table-filter" data-table="order-table" placeholder="FILTER BY ROLE" /> <a class="button"><i class="fa fa-exclamation-circle"></i> Report Error</a>
 	<section class="table-box">
 		<table class="order-table">
 			<thead>
 				<tr>
-					<th>id</th>
-					<th>medicin</th>
-					<th> amount</th>
-                                        <th>price</th>
-					<th>dtime &ate</th>
+					<th>NAME</th>
+					<th>ID</th>
+					<th>ITEMID</th>
+					<th>Mount</th>
+                    <th>UNITPRICE</th>
+                    <th>TOTALPRICE</th>
+					<th>INVOICEDATE</th>
                                        
-					
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td>1</td>
-					<td>fg</td>
-					<td>9</td>
-					<td>99</td>
-                                        <td>4:50 pm __ 20/2/2020</td>
-					
-				</tr>
-				<tr>
-					<td>2</td>
-					<td>dfd</td>
-					<td>9876543210</td>
-					<td>349</td>
-					
-				</tr>
-				<tr>
-					<td>3</td>
-					<td>rgggg</td>
-					<td>7542890</td>
-					<td>199</td>
-				</tr>
-				<tr>
-					<td>4</td>
-					<td>kbr</td>
-					<td>2345689</td>
-					<td>21399</td>
-				</tr>
-				<tr>
-					<td>5</td>
-					<td>gftr</td>
-					<td>70</td>
-					<td>349</td>
-				</tr>
-				<tr>
-					<td>6</td>
-					<td>gftr</td>
-					<td>60</td>
-					<td>199S356</td>
-				</tr>
+				 <?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "project_db";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+$sql = "SELECT * FROM `invoices`";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+    	$l=$row["itemId"];
+    	$sql = "SELECT `name` FROM `items` WHERE `id`=$l";
+        $sult = $conn->query($sql);
+        $rw = $sult->fetch_assoc();
+        echo "<tr> "."<th>".$rw["name"]."</th>"."<th>".$row["id"]."</th>"."<th>".$row["itemId"]."</th>"."<th>".$row["Mount"]."</th>"."<th>".$row["unitPrice"]      ."</th>"."<th>".$row["totalPrice"]."</th>"."<th>".$row["invoiceDate"]."</th>"."</tr>";
+    }
+} else {
+    echo "0 results";
+}
+$conn->close();
+            	
+
+
+
+
+	       ?>		
 			</tbody>
 		</table>
 	</section>

@@ -1,35 +1,29 @@
-
+<head>
+  <title>Add Invoce</title>
+  <link rel="stylesheet" type="text/css" href="../../..//test-samer/css/pola.css">
+</head>
+<body>
 <div class="container ">
 <br/>
 <legend>Add Invoice</legend>
 <br/>
+<form action="../../controllers/addinvoiceController.php" method="post" ">
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">Item</th>
+      <th scope="col">ItemID</th>
       <th scope="col">Amount</th>
-      <th scope="col">Price $</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th scope="row">1</th>
-      <td>profen</td>
-      <td>2</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>flomox</td>
-      <td>1</td>
-      <td>20</td>
-    </tr>
-    <tr>
-      <th colspan="3"></th>
-     
-      <td>25</td>
+      <td><input type="number" name="itemID" required="required" min="1"></td>
+      <td><input type="number" name="Amount" required="required" min="1" max="1000"></td>
     </tr>
   </tbody>
 </table>
+<input type="submit" name="SUBMIT" value="submit" required="required">
+</from>
+
 </div>
+</body>
